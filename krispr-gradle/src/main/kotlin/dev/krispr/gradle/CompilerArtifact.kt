@@ -59,7 +59,17 @@ internal object CompilerArtifact {
             // configuring, and resolving the project's own configuration then broke Kotlin 2.1 multiplatform
             // builds ("Cannot create variant 'kotlinProjectStructureMetadata' after dependency configuration
             // ':clikt:metadataApiElements' has been resolved", clikt on Gradle 8.7).
-            configuration.copyRecursive().resolvedConfiguration.lenientConfiguration.artifacts.map {
+            //
+            // The Kotlin plugin adds kotlin-compiler-embeddable to kotlinCompilerClasspath as a default
+            // dependency, which only fires when the original is resolved, so the copy of an otherwise empty
+            // configuration is empty and a forced version (resolutionStrategy.force) would have nothing to act
+            // on. Give the copy the same default; the copied strategy then forces or substitutes it as the
+            // build would.
+            val copy = configuration.copyRecursive()
+            if (copy.allDependencies.isEmpty() && configurationName == "kotlinCompilerClasspath") {
+                copy.dependencies.add(project.dependencies.create("org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlinGradlePluginVersion"))
+            }
+            copy.resolvedConfiguration.lenientConfiguration.artifacts.map {
                 Triple(it.moduleVersion.id.group, it.moduleVersion.id.name, it.moduleVersion.id.version)
             }
         }.getOrElse { emptyList() }

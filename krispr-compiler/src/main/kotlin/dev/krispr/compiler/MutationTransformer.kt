@@ -119,9 +119,9 @@ import org.jetbrains.kotlin.name.Name
  * because the compiler inlines them into callers.
  *
  * Only user-written code is touched: functions whose origin is not DEFINED (data class members,
- * default accessors, enum helpers, anything a plugin generated) are skipped wholesale, as are
- * `hashCode`/`equals` overrides, [AridCode] unless the build asks for it, and nodes without source
- * offsets. This runs before lowering, so coroutine state machines and default-argument bridges do not
+ * default accessors, enum helpers, anything a plugin generated) are skipped wholesale, as is
+ * [AridCode] (`equals`/`hashCode` and `toString` overrides among it) unless the build asks for it, and
+ * nodes without source offsets. This runs before lowering, so coroutine state machines and default-argument bridges do not
  * exist yet.
  */
 class MutationTransformer(
@@ -2047,7 +2047,7 @@ class MutationTransformer(
         val id = ids.assign(file.path, declaration, operator)
         val line = file.lineOf(site.startOffset)
         if (line in ignoredLines) return null
-        sink += Mutant(id, file.path, line, file.columnOf(site.startOffset), operator, description, declaration, inClassInitializer(), hashOf(element))
+        sink += Mutant(id, file.path, line, file.columnOf(site.startOffset), operator, fitDescription(description), declaration, inClassInitializer(), hashOf(element))
         return id
     }
 
@@ -2097,11 +2097,7 @@ class MutationTransformer(
         irCall(builtIns.booleanNotSymbol).apply { arguments[0] = value }
 
     private fun isMutable(function: IrFunction): Boolean {
-        if (function.origin !in MUTABLE_ORIGINS) return false
-        if (function is IrSimpleFunction && function.name.asString() in OBJECT_MEMBERS && function.overriddenSymbols.isNotEmpty()) {
-            return false
-        }
-        return true
+        return function.origin in MUTABLE_ORIGINS
     }
 
     private fun isEquality(expression: IrExpression): Boolean {
@@ -2173,10 +2169,8 @@ class MutationTransformer(
     /** Each schema block [rewrite] made, to where the text of the site it replaced starts. */
     private val rewritten = IdentityHashMap<IrElement, Int>()
 
-    private fun oneLine(text: String): String {
-        val collapsed = text.replace(Regex("\\s+"), " ").trim()
-        return if (collapsed.length > 80) collapsed.take(77) + "..." else collapsed
-    }
+    /** Whitespace collapsed; the length is settled once per description by [fitDescription], in [register]. */
+    private fun oneLine(text: String): String = text.replace(Regex("\\s+"), " ").trim()
 
     private fun IrElement.hasOffsets(): Boolean = startOffset >= 0 && endOffset >= startOffset
 
@@ -2199,9 +2193,6 @@ class MutationTransformer(
             IrDeclarationOrigin.LOCAL_FUNCTION,
             IrDeclarationOrigin.LOCAL_FUNCTION_FOR_LAMBDA,
         )
-
-        /** `toString` is [AridCategory.TO_STRING]. */
-        val OBJECT_MEMBERS = setOf("hashCode", "equals")
 
         val MUTABLE_FIELD_ORIGINS = setOf(
             IrDeclarationOrigin.DEFINED,

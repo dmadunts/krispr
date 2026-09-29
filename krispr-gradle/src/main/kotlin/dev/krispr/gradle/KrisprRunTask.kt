@@ -9,11 +9,14 @@ import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.PathSensitive
+import org.gradle.api.tasks.PathSensitivity
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
+import org.gradle.work.DisableCachingByDefault
 import org.gradle.api.tasks.options.Option
 import java.io.File
 import java.lang.management.ManagementFactory
@@ -55,6 +58,7 @@ internal fun batchEnd(index: Int, total: Int): Int {
     return total
 }
 
+@DisableCachingByDefault(because = "runs every mutant's tests in forked JVMs; verdicts are reused through historyFile instead")
 abstract class KrisprRunTask : KrisprForkTask() {
     /**
      * Written by the instrumented compile, which this task's classpath already depends on. Internal rather
@@ -64,7 +68,7 @@ abstract class KrisprRunTask : KrisprForkTask() {
 
     /** False when this invocation did not instrument the main compilation; fails the task with advice. */
     @get:Internal abstract val instrumented: Property<Boolean>
-    @get:InputFile abstract val coverage: RegularFileProperty
+    @get:InputFile @get:PathSensitive(PathSensitivity.NONE) abstract val coverage: RegularFileProperty
     @get:Input abstract val timeoutFactor: Property<Double>
     @get:Input abstract val timeoutConstantMillis: Property<Long>
 

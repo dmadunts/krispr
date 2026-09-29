@@ -13,6 +13,7 @@ internal fun aridOptions(extension: KrisprExtension): List<SubpluginOption> =
         extension.mutateLogging to "logging",
         extension.mutateDependencyInjection to "dependencyInjection",
         extension.mutateToString to "toString",
+        extension.mutateEqualsHashCode to "equalsHashCode",
         extension.mutateTrivialGetters to "trivialGetters",
         extension.mutateCaches to "caches",
         extension.mutateDelays to "delays",

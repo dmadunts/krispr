@@ -46,6 +46,7 @@ krispr {
     mutateLogging = true
     mutateDependencyInjection = true
     mutateToString = true
+    mutateEqualsHashCode = true
     mutateTrivialGetters = true
     mutateCaches = true
     mutateDelays = true

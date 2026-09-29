@@ -42,6 +42,14 @@ enum class AridCategory(val option: String) {
     /** `toString` overrides. */
     TO_STRING("toString"),
 
+    /**
+     * `equals` and `hashCode` overrides. Skipped by default because most are structural (data-class style,
+     * or delegating to one field) and their mutants read as noise; turn them on for a class whose equality
+     * is logic. The comparison with PIT found a real gap in kotlin-result's `Failure.equals`, and a kotlinpoet
+     * bug fix landed inside `TypeVariableName.equals`/`hashCode` (docs/evidence.md).
+     */
+    EQUALS_HASH_CODE("equalsHashCode"),
+
     /** Custom getters that only read a field, value, constant or another property. */
     TRIVIAL_GETTERS("trivialGetters"),
 
@@ -82,6 +90,8 @@ class AridCode(private val mutate: Set<AridCategory> = emptySet()) {
         (skips(AridCategory.COMPOSABLES) && (function.hasAnnotation(COMPOSABLE) || function.annotations.any(::isPreview))) ||
             (skips(AridCategory.DEPENDENCY_INJECTION) && function.annotations.any { it.isFrom(DI_PACKAGES, DI_FUNCTION_ANNOTATIONS) }) ||
             (skips(AridCategory.TO_STRING) && function is IrSimpleFunction && function.name.asString() == "toString" &&
+                function.overriddenSymbols.isNotEmpty()) ||
+            (skips(AridCategory.EQUALS_HASH_CODE) && function is IrSimpleFunction && function.name.asString() in OBJECT_MEMBERS &&
                 function.overriddenSymbols.isNotEmpty()) ||
             (skips(AridCategory.TRIVIAL_GETTERS) && isTrivialGetter(function)) ||
             (skips(AridCategory.GENERATED) && function.annotations.any(::isGenerated))
@@ -235,6 +245,7 @@ class AridCode(private val mutate: Set<AridCategory> = emptySet()) {
 
     private companion object {
         const val COMPOSABLE = "androidx.compose.runtime.Composable"
+        val OBJECT_MEMBERS = setOf("equals", "hashCode")
 
         val PREVIEW_PACKAGES = listOf(
             "androidx.compose.ui.tooling.preview",

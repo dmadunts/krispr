@@ -6,6 +6,7 @@ import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
+import org.gradle.work.DisableCachingByDefault
 import java.io.File
 
 /**
@@ -14,6 +15,7 @@ import java.io.File
  * `krisprRun` (see KrisprGradlePlugin), so it always runs right after, whether or not the run task's own
  * outcome contains survivors.
  */
+@DisableCachingByDefault(because = "reads report.json and the project's sources when it runs, and is cheap to rerun")
 abstract class KrisprReportTask : DefaultTask() {
     /**
      * Internal rather than an input file: `krisprRun` always writes it before this task runs, except when

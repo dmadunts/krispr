@@ -212,6 +212,25 @@ class AridCodeTest {
     )
 
     @Test
+    fun equalsAndHashCodeOverrides() = assertArid(
+        "equalsHashCode",
+        """
+        class Version(val major: Int, val minor: Int) {
+            override fun equals(other: Any?): Boolean = other is Version && other.major == major
+            override fun hashCode(): Int = major * 31
+        }
+        """.trimIndent(),
+        mutated = listOf(
+            "major * 31 → major / 31",
+            "other is Version && other.major == major → other is Version && true",
+            "other is Version && other.major == major → other is Version || other.major == major",
+            "other.major == major → other.major != major",
+            "return major * 31 → return 0",
+            "return other is Version && other.major == major → return !(other is Version && other.major == major)",
+        ),
+    )
+
+    @Test
     fun trivialGettersButNotComputedOnes() {
         val source = """
             class Cart(private var items: Int) {
