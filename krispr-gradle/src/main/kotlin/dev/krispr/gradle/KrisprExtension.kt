@@ -98,6 +98,9 @@ abstract class KrisprExtension {
     /** Mutate `toString` overrides. */
     abstract val mutateToString: Property<Boolean>
 
+    /** Mutate `equals` and `hashCode` overrides; worth it for a class whose equality is logic, noise for a structural one. */
+    abstract val mutateEqualsHashCode: Property<Boolean>
+
     /** Mutate custom getters that only read a field, value, constant or another property. */
     abstract val mutateTrivialGetters: Property<Boolean>
 

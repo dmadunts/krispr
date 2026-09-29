@@ -19,6 +19,10 @@ these by default. Each category can be turned back on in `krispr { }`:
   (`module { single { } }`). This is wiring, which the DI framework validates or which fails on
   first use.
 - **`mutateToString`**: `toString` overrides, which are debug output.
+- **`mutateEqualsHashCode`**: `equals` and `hashCode` overrides. Most are structural (data-class style, or
+  delegating to one field) and their mutants read as noise, but for a class whose equality is logic they are
+  worth turning on: the comparison with PIT found a real gap in kotlin-result's `Failure.equals`, and a
+  kotlinpoet bug fix landed inside `TypeVariableName.equals`/`hashCode` ([evidence.md](evidence.md)).
 - **`mutateTrivialGetters`**: custom getters that only read a field, parameter, constant, object or
   another property (`get() = _state.value` is skipped; `get() = items.size > 10` is not). Their
   mutants just replace the value with a default.
@@ -40,7 +44,7 @@ The rules go by names, so they are conservative: a lookup of a map called `price
 - **`mutateGenerated`**: classes and functions annotated `@Generated`, from any package
   (`javax.annotation.processing`, `jakarta.annotation`, a code generator's own).
 
-`equals` and `hashCode` overrides are always skipped. `AridCodeTest` has a test per category.
+`AridCodeTest` has a test per category.
 Krispr also never makes a mutant that cannot change the result: `x + 0` and `x - 0` on whole
 numbers, `x * 1`, `x / 1`, `x * -1` and `x / -1` (`0 - x` and `1 / x` keep theirs).
 

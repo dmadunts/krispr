@@ -106,7 +106,7 @@ noise or can't be killed. Google's arid heuristics raised the share of useful mu
   default-argument bridges, and similar. Mutating before code generation avoids most of it, which is the
   reason Krispr exists.
 - **Our own rules** (extrapolated, judgment): `@Composable` and `@Preview` bodies, DI declarations
-  (Hilt/Dagger/Koin/Metro), `toString`, trivial getters, and `@Generated` code. Every category has an
+  (Hilt/Dagger/Koin/Metro), `toString`, `equals`/`hashCode`, trivial getters, and `@Generated` code. Every category has an
   opt-out (`mutateCaches`, `mutateDelays`, `mutateMetrics`, and so on).
 - **Project rules:** a trailing `// krispr:ignore` drops the mutants of a line, and a `.krispr-exclude`
   file drops them by file, class, function, operator or line range.

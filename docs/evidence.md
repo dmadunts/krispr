@@ -272,14 +272,15 @@ Ordered by how much of what this page measured each would change.
 1. **Timeout cost.** Most of clikt's remaining time is the fresh-JVM retry of every timeout in a reused
    JVM. Measure how often the retry changes a verdict. If it never does on plain JVM tests, run it only
    where Robolectric or a timing check says the worker is suspect.
-2. **Hand-written `equals`/`hashCode`.** Krispr skips them, and both a real gap (kotlin-result) and a
-   real bug (kotlinpoet `d6e3b13a`) sat in one. Measure the survivors mutating them adds on these targets
-   before changing the default.
+2. **Hand-written `equals`/`hashCode`.** Krispr skipped them, and both a real gap (kotlin-result) and a
+   real bug (kotlinpoet `d6e3b13a`) sat in one. They can now be mutated with `mutateEqualsHashCode`;
+   measure the survivors that adds on real targets before deciding whether it should be the default.
 3. **Return values of generic and other types.** turbine's `withTurbineTimeout` returning `null` is a real
    gap Krispr cannot express.
 4. **Line-wrapping in diff mode.** After ignoring whitespace, kotlinpoet's formatter commit still made
    284 mutants from re-wrapped lines. A token-level diff would drop them.
-5. **Descriptions of long expressions.** One diff-mode survivor's description was cut off so that before
-   and after read the same; the raters had to guess the mutant.
+5. **Descriptions of long expressions.** Done: one diff-mode survivor's description was cut off so that
+   before and after read the same. Descriptions now fold the text both sides share, so the change is always
+   in view.
 6. **Human raters.** Every "real gap" here is a model's judgement. A few developers rating the same
    `bench/results` items, or writing the tests the survivors ask for, would settle how much they are worth.

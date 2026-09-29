@@ -28,11 +28,12 @@
 - **Not mutated**: conditions of a `when` without a subject other than `is` checks (only `if` is negated),
   ranges iterated by a `for` loop,
   string templates, and return values other than Boolean, Int, nullable and (opt-in) empty ones. Equality checks in a subject `when` are
-  mutated, but their descriptions are poor. Hand-written `equals` and `hashCode` overrides are never mutated.
-  The comparison with PIT ([evidence.md](evidence.md#does-krispr-miss-what-pit-finds)) found a real test gap
-  behind each of these two: kotlin-result's `Failure.equals` returning `true` goes unnoticed, and so does
-  turbine's `withTurbineTimeout` returning `null` for a generic `T`. A kotlinpoet bug fix inside
-  `TypeVariableName.equals`/`hashCode` also had no mutant on its lines.
+  mutated, but their descriptions are poor. Hand-written `equals` and `hashCode` overrides are skipped
+  unless `mutateEqualsHashCode` is set; the comparison with PIT
+  ([evidence.md](evidence.md#does-krispr-miss-what-pit-finds)) found a real gap in kotlin-result's
+  `Failure.equals`, and a kotlinpoet bug fix inside `TypeVariableName.equals`/`hashCode` had no mutant on its
+  lines. turbine's `withTurbineTimeout` returning `null` for a generic `T` is a gap no return-value operator
+  covers.
 - **K2 API stability**: the plugin uses `IrElementTransformerVoidWithContext`,
   `DeclarationIrBuilder` and the `@UnsafeDuringIrConstructionAPI` symbol owners. These are internal
   compiler APIs with no compatibility promise, and each Kotlin minor may break them. Kotlin is

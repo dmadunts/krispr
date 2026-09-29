@@ -7,6 +7,17 @@ import org.junit.jupiter.api.io.TempDir
 import java.io.File
 
 class AridOptionsTest {
+    @Test
+    fun `every arid category the build turns on is passed to the compiler, and none by default`(@TempDir dir: File) {
+        val project = ProjectBuilder.builder().withProjectDir(dir).build()
+        val extension = project.objects.newInstance(KrisprExtension::class.java)
+        assertEquals(emptyList<String>(), aridOptions(extension).map { it.value })
+
+        extension.mutateEqualsHashCode.set(true)
+        extension.mutateToString.set(true)
+        assertEquals(listOf("toString", "equalsHashCode"), aridOptions(extension).map { it.value })
+    }
+
     /**
      * `sourceDirs` is the compilation's own source directories (KrisprGradlePlugin passes
      * `allKotlinSourceSets.flatMap { it.kotlin.srcDirs }`); empty means the Kotlin compile task has no

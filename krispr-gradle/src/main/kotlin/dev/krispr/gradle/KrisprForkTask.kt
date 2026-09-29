@@ -9,16 +9,17 @@ import org.gradle.api.provider.MapProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Classpath
 import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Nested
+import org.gradle.work.DisableCachingByDefault
 import org.gradle.jvm.toolchain.JavaLauncher
 import java.io.File
 
 /** What the recording and mutant forks share: the instrumented test classpath and the test task's process settings. */
+@DisableCachingByDefault(because = "runs the project's tests in forked JVMs; what they record depends on that run, not only on these inputs")
 abstract class KrisprForkTask : DefaultTask() {
     @get:Classpath abstract val testClasspath: ConfigurableFileCollection
-    @get:InputFiles abstract val testClassesDirs: ConfigurableFileCollection
+    @get:Classpath abstract val testClassesDirs: ConfigurableFileCollection
     @get:Nested abstract val javaLauncher: Property<JavaLauncher>
 
     /** The test task's `allJvmArgs`: system properties, heap settings, `-ea`, JVM argument providers. */

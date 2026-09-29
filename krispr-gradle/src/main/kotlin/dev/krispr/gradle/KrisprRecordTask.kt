@@ -8,6 +8,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
+import org.gradle.work.DisableCachingByDefault
 import java.util.Properties
 
 /**
@@ -15,6 +16,7 @@ import java.util.Properties
  * tests reach which mutants. Uses the same runner as the mutant forks, with the test task's filters
  * applied, and forces serial execution so each hit is attributed to the test that caused it.
  */
+@DisableCachingByDefault(because = "runs the project's tests once to record which test reaches which mutant; what they record depends on that run")
 abstract class KrisprRecordTask : KrisprForkTask() {
     @get:Input abstract val includeTags: ListProperty<String>
     @get:Input abstract val excludeTags: ListProperty<String>
