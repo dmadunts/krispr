@@ -50,6 +50,8 @@ class CompilerVariantPlugin : Plugin<Project> {
         // The compiler brings its own stdlib; the plugin must not drag a newer one onto its classpath.
         project.extensions.extraProperties["kotlin.stdlib.default.dependency"] = "false"
         project.pluginManager.apply("org.jetbrains.kotlin.jvm")
+        project.pluginManager.apply(PublishConventionPlugin::class.java)
+        project.description = "Krispr's Kotlin compiler plugin, built for one range of Kotlin releases"
         val variant = project.extensions.create("compilerVariant", CompilerVariantExtension::class.java)
         val shared = project.rootDir.resolve("krispr-compiler/src")
 

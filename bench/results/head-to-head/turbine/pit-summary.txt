@@ -1,0 +1,3 @@
+>> Line Coverage (for mutated classes only): 319/345 (92%)
+>> Generated 309 mutations Killed 198 (64%)
+>> Mutations with no coverage 40. Test strength 74%

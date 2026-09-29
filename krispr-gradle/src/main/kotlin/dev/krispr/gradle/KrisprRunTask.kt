@@ -68,8 +68,8 @@ abstract class KrisprRunTask : KrisprForkTask() {
     @get:Input abstract val timeoutFactor: Property<Double>
     @get:Input abstract val timeoutConstantMillis: Property<Long>
 
-    /** See [KrisprExtension.timeoutMinimumMillis]. */
-    @get:Input abstract val timeoutMinimumMillis: Property<Long>
+    /** See [KrisprExtension.timeoutMinimumMillis]; unset: [Timeouts.defaultMinimum]. */
+    @get:Input @get:Optional abstract val timeoutMinimumMillis: Property<Long>
 
     /** At most this many of this module's mutants run at once; 0 or less: [jvmCap]. */
     @get:Input abstract val threads: Property<Int>
@@ -299,8 +299,9 @@ abstract class KrisprRunTask : KrisprForkTask() {
             FRESH -> false
             else -> throw GradleException("krispr: robolectricReuse is '$value'; use '$SANDBOX' or '$FRESH'.")
         }
+        val timeoutMinimum = timeoutMinimumMillis.orNull ?: Timeouts.defaultMinimum(robolectric)
         // timeoutControl: TIMED_OUT verdicts from before #42 may be the host's doing, so they are not reused.
-        val settings = "$KRISPR_VERSION|${timeoutFactor.get()}|${timeoutConstantMillis.get()}|${timeoutMinimumMillis.get()}|${confirmKills.get()}|timeoutControl" +
+        val settings = "$KRISPR_VERSION|${timeoutFactor.get()}|${timeoutConstantMillis.get()}|$timeoutMinimum|${confirmKills.get()}|timeoutControl" +
             if (!robolectric) "" else if (sandboxReuse) "|robolectricReuse=$SANDBOX|confirmSurvivors=${confirmSurvivors.get()}|keepAfterKill=${robolectricKeepAfterKill.get()}" else "|robolectricReuse=$FRESH"
         val history = if (useHistory.get()) History.read(historyFile, settings) else null
         val classHashes = TestClassHashes(testClassesDirs.files)
@@ -393,12 +394,12 @@ abstract class KrisprRunTask : KrisprForkTask() {
                 }
                 val timeouts = Timeouts(
                     baseline.millis, baselineSelectors, { recorded[it]?.ownMillis }, baseline.timing,
-                    if (reuse) workers.checkTimings else emptyList(), timeoutFactor.get(), timeoutConstantMillis.get(), timeoutMinimumMillis.get(),
+                    if (reuse) workers.checkTimings else emptyList(), timeoutFactor.get(), timeoutConstantMillis.get(), timeoutMinimum,
                 )
                 timeoutOf = timeouts::forFork
                 logger.lifecycle(
                     "krispr: ${mutants.size} mutants, ${covered.size} covered; baseline ${baseline.millis} ms, " +
-                        "timeout ${timeoutMinimumMillis.get()} to ${timeouts.max} ms, $threadCount threads, at most $cap JVMs at once build-wide" +
+                        "timeout $timeoutMinimum to ${timeouts.max} ms, $threadCount threads, at most $cap JVMs at once build-wide" +
                         if (reuse) ", reused JVMs (${workers.unsafe.size} tests need fresh ones)" else "",
                 )
                 logger.info(

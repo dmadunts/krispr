@@ -1,0 +1,87 @@
+{
+  "krispr": {
+    "mutants": 142,
+    "killed": 106,
+    "survived": 24,
+    "no_coverage": 8,
+    "other": {
+      "NOT_MEASURED": 4
+    },
+    "score_of_covered": 81.5,
+    "survivors_per_100_mutants": 16.9
+  },
+  "pit": {
+    "mutants": 309,
+    "killed": 198,
+    "survived": 71,
+    "no_coverage": 40,
+    "other": {},
+    "score_of_covered": 73.6,
+    "survivors_per_100_mutants": 23.0
+  },
+  "pit_no_coverage_in_inline_functions": 0,
+  "krispr_in_inline_functions": {
+    "mutants": 0,
+    "killed": 0,
+    "survived": 0,
+    "no_coverage": 0,
+    "other": {},
+    "score_of_covered": null,
+    "survivors_per_100_mutants": null
+  },
+  "pit_in_inline_functions": {
+    "mutants": 0,
+    "killed": 0,
+    "survived": 0,
+    "no_coverage": 0,
+    "other": {},
+    "score_of_covered": null,
+    "survivors_per_100_mutants": null
+  },
+  "pit_mechanical_junk": {
+    "coroutine state machine": 86,
+    "null-check intrinsic": 2,
+    "inlined code (line past end of file)": 3
+  },
+  "pit_mechanical_junk_survivors": {
+    "coroutine state machine": 45,
+    "null-check intrinsic": 2,
+    "inlined code (line past end of file)": 1
+  },
+  "pit_mechanical_junk_killed": 31,
+  "pit_generated_member_mutants": 0,
+  "pit_generated_member_survivors": 0,
+  "pit_generated_by_member": {},
+  "pit_by_mutator": {
+    "NegateConditionalsMutator": 125,
+    "VoidMethodCallMutator": 76,
+    "NullReturnValsMutator": 90,
+    "EmptyObjectReturnValsMutator": 7,
+    "ConditionalsBoundaryMutator": 1,
+    "IncrementsMutator": 1,
+    "BooleanFalseReturnValsMutator": 2,
+    "BooleanTrueReturnValsMutator": 5,
+    "PrimitiveReturnsMutator": 2
+  },
+  "krispr_by_operator": {
+    "BOOLEAN_LOGIC": 7,
+    "CONDITION_FALSE": 28,
+    "RETURN_VALUE": 4,
+    "REMOVE_CALL": 23,
+    "NEGATE_EQUALITY": 12,
+    "CONDITION_TRUE": 23,
+    "NEGATE_IF": 9,
+    "REMOVE_ASSIGNMENT": 7,
+    "SAFE_CALL_BODY": 7,
+    "ELVIS": 8,
+    "REMOVE_CHAIN_CALL": 2,
+    "ARGUMENT_PROPAGATION": 1,
+    "NULL_RETURNS": 3,
+    "SKIP_IS_BRANCH": 3,
+    "EMPTY_STRING_RETURNS": 1,
+    "COROUTINE_CONTEXT": 2,
+    "LAUNCH_BODY": 1,
+    "FLOW_EMIT": 1
+  },
+  "unresolved_sources": []
+}

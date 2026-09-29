@@ -23,8 +23,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import java.io.File
 import java.util.concurrent.Callable
 
-/** Keep in sync with the root build's `version`. */
-const val KRISPR_VERSION = "0.1.0-SNAPSHOT"
 private const val GROUP = "dev.krispr"
 
 /**
@@ -51,8 +49,7 @@ class KrisprGradlePlugin : KotlinCompilerPluginSupportPlugin {
         // PIT's defaults.
         extension.timeoutFactor.convention(1.25)
         extension.timeoutConstantMillis.convention(4_000L)
-        // A fresh JVM's Robolectric start-up on a busy host (#34).
-        extension.timeoutMinimumMillis.convention(10_000L)
+        // timeoutMinimumMillis has no convention: unset, the run task picks Timeouts.defaultMinimum.
         extension.threads.convention(0)
         extension.maxConcurrentJvms.convention(0)
         extension.forkJvmTuning.convention(KrisprForkTask.TUNING_AUTO)

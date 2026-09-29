@@ -80,6 +80,15 @@ internal class Timeouts(
     }
 
     companion object {
+        /**
+         * The floor when `timeoutMinimumMillis` is not set. A fresh JVM that sets up Robolectric can take several
+         * seconds on a busy host before its first test, which a short test's timeout would not cover (#34), so
+         * a module whose tests use Robolectric gets 10 s. Plain JVM tests have no such start-up: the formula's
+         * constant already covers the JVM's (as in PIT), and a slow host is caught by [afterTimeout]'s control
+         * run, so they get no floor. On clikt, a 10 s floor made its 21 timeouts most of the run's wall time.
+         */
+        fun defaultMinimum(robolectric: Boolean): Long = if (robolectric) 10_000L else 0L
+
         /** Starts the reason of an UNKNOWN from [afterTimeout]; the summary line counts these apart. */
         const val HOST_TOO_SLOW = "host too slow"
     }

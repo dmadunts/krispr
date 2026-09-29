@@ -3,7 +3,10 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    id("krispr.publish")
 }
+
+description = "Krispr runtime: the mutant switch, the coverage recorder and the test runner"
 
 kotlin {
     jvmToolchain(21)

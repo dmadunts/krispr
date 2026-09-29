@@ -13,9 +13,10 @@ abstract class KrisprExtension {
     abstract val timeoutConstantMillis: Property<Long>
 
     /**
-     * No mutant run times out sooner than this. Default 10000: a fresh JVM on a busy host can take
-     * several seconds to start Robolectric before its first test, which a short test's timeout would
-     * not cover (#34). A reused worker's timeout is also retried once in a fresh JVM with twice the time.
+     * No mutant run times out sooner than this. Unset (the default): 10000 when the module's tests use
+     * Robolectric, since a fresh JVM on a busy host can take several seconds to start it before the first
+     * test, which a short test's timeout would not cover (#34); no floor for plain JVM tests. A reused
+     * worker's timeout is also retried once in a fresh JVM with twice the time.
      */
     abstract val timeoutMinimumMillis: Property<Long>
 
@@ -61,7 +62,7 @@ abstract class KrisprExtension {
     abstract val kotlinTarget: Property<String>
 
     /**
-     * The mutation operators, by name (see README "Operators"). Unset or empty: the default set. `DEFAULTS`
+     * The mutation operators, by name (see docs/PHILOSOPHY.md "Operators"). Unset or empty: the default set. `DEFAULTS`
      * stands for the default set, so `listOf("DEFAULTS", "EMPTY_RETURNS")` adds one opt-in operator.
      * `-Pkrispr.operators=A,B` overrides the build script.
      */
@@ -83,7 +84,7 @@ abstract class KrisprExtension {
     /** Reuse verdicts from [historyFile]. Default true; `-Pkrispr.history=false` overrides the build script. */
     abstract val useHistory: Property<Boolean>
 
-    // --- Arid code (W1): categories skipped by default, see README "Arid code". Unset means false. ---
+    // --- Arid code (W1): categories skipped by default, see docs/tuning.md "Arid code". Unset means false. ---
 
     /** Mutate `@Composable` functions and lambdas, and `@Preview` functions. */
     abstract val mutateComposables: Property<Boolean>

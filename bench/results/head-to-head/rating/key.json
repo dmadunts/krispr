@@ -1,0 +1,590 @@
+{
+ "S000": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S001": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S002": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S003": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S004": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S005": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S006": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S007": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S008": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S009": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S010": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S011": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S012": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S013": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S014": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S015": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S016": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S017": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S018": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S019": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S020": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S021": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S022": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S023": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S024": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S025": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S026": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S027": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S028": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S029": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S030": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S031": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S032": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S033": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S034": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S035": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S036": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S037": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S038": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S039": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S040": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S041": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S042": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S043": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S044": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S045": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S046": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S047": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S048": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S049": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S050": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S051": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S052": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S053": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S054": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S055": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S056": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S057": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S058": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S059": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S060": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S061": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S062": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S063": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S064": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S065": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S066": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S067": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S068": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S069": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S070": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S071": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S072": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S073": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S074": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S075": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S076": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S077": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S078": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S079": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S080": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S081": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S082": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S083": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S084": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S085": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S086": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S087": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S088": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S089": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S090": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S091": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S092": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S093": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S094": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S095": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S096": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S097": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S098": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S099": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S100": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S101": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S102": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S103": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S104": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S105": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S106": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S107": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S108": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S109": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S110": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S111": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S112": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S113": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S114": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S115": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S116": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S117": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S118": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S119": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S120": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S121": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S122": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S123": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S124": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S125": {
+  "tool": "pit",
+  "total_survivors": 13
+ },
+ "S126": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S127": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S128": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S129": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S130": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S131": {
+  "tool": "pit",
+  "total_survivors": 71
+ },
+ "S132": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S133": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S134": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S135": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S136": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S137": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S138": {
+  "tool": "krispr",
+  "total_survivors": 24
+ },
+ "S139": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S140": {
+  "tool": "krispr",
+  "total_survivors": 20
+ },
+ "S141": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S142": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S143": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S144": {
+  "tool": "pit",
+  "total_survivors": 273
+ },
+ "S145": {
+  "tool": "krispr",
+  "total_survivors": 197
+ },
+ "S146": {
+  "tool": "pit",
+  "total_survivors": 273
+ }
+}

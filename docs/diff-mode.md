@@ -1,6 +1,6 @@
 # Diff mode on pull requests
 
-Diff mode (see the [README](../README.md#diff-mode)) scopes a `krisprRun` to the lines a PR actually
+Diff mode (see the [usage guide](usage.md#diff-mode)) scopes a `krisprRun` to the lines a PR actually
 changed: instrumentation, mutants, and the report all shrink to the diff, and the run produces two extra
 files under `build/krispr/` for a workflow to post back onto the PR:
 

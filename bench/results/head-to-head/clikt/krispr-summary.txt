@@ -1,0 +1,1 @@
+krispr: 1495 mutants: 1169 killed (21 timed out, 1 by memory error), 197 survived, 0 unknown, 129 no coverage, 0 run errors; score 85% of covered, 78% of valid, 0 not measured; wall 426.6s

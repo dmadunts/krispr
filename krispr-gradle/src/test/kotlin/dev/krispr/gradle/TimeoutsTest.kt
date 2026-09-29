@@ -48,6 +48,15 @@ class TimeoutsTest {
     }
 
     @Test
+    fun onlyRobolectricGetsAFloorByDefault() {
+        assertEquals(10_000, Timeouts.defaultMinimum(robolectric = true))
+        assertEquals(0, Timeouts.defaultMinimum(robolectric = false))
+        // Plain JVM tests then time out by PIT's formula alone, well under the old 10 s floor.
+        val timeouts = timeouts(baselineMillis = 1_000, minimum = Timeouts.defaultMinimum(robolectric = false))
+        assertEquals(((100 + 600) * 1.25).toLong() + 4_000, timeouts.forFork(listOf("a")))
+    }
+
+    @Test
     fun noTimeoutIsAboveTheBaselineWideOneExceptTheRetry() {
         val timeouts = timeouts(baselineMillis = 20_000)
         assertEquals(29_000, timeouts.max)

@@ -99,7 +99,7 @@ noise or can't be killed. Google's arid heuristics raised the share of useful mu
 
 - **Google's categories:** logging, memoization and cache lookups, sleeps, timeouts and delays, and
   metrics or analytics counters. The rules go by names (`getOrPut`, `cache[key] != null`, `delay`,
-  `withTimeout`, `analytics.track*`, `metrics.*`, `counter.inc*`) and are conservative; the README lists
+  `withTimeout`, `analytics.track*`, `metrics.*`, `counter.inc*`) and are conservative; docs/tuning.md lists
   them. The value a `withTimeout` call returns is arid too (negating it repeats the block's own
   return-value mutant); the code inside the block is still mutated.
 - **Kotlin compiler-generated code:** data class members, coroutine state machines, null intrinsics,

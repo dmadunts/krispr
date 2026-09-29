@@ -1,0 +1,2 @@
+/home/user/results/kotlin-result/after/krispr.log:krispr: 322 mutants: 292 killed (0 timed out), 20 survived, 0 unknown, 10 no coverage, 0 run errors; score 93% of covered, 90% of valid, 0 not measured; wall 3.7s
+/home/user/results/kotlin-result/after2/krispr.log:krispr: 322 mutants: 292 killed (0 timed out), 20 survived, 0 unknown, 10 no coverage, 0 run errors; score 93% of covered, 90% of valid, 0 not measured; wall 5.7s
