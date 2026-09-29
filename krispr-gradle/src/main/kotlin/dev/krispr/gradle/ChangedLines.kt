@@ -7,6 +7,11 @@ import java.util.concurrent.TimeUnit
 /**
  * The lines diff mode mutates: those added or changed between the merge base of a ref and HEAD, and the
  * working tree, so uncommitted edits count. Untracked files count whole.
+ *
+ * Whitespace-only edits do not count (`--ignore-all-space`): re-indenting or reformatting changes no
+ * behaviour, but in the diff-mode replay a formatter switch made every line of kotlinpoet "changed" and
+ * reported 50 survivors in code nobody touched (docs/evidence.md). Whitespace inside a string literal is
+ * behaviour, but krispr does not mutate string contents, so no mutant is lost with it.
  */
 internal class ChangedLines(
     /** Canonical file to its changed line numbers (1-based). */
@@ -29,7 +34,7 @@ internal class ChangedLines(
             val base = git(root, "merge-base", ref, "HEAD").trim()
             val diff = git(
                 root, "-c", "core.quotePath=false", "diff", "--no-color", "--no-ext-diff", "--unified=0",
-                "--find-renames", "--src-prefix=a/", "--dst-prefix=b/", base, "--",
+                "--ignore-all-space", "--find-renames", "--src-prefix=a/", "--dst-prefix=b/", base, "--",
             )
             val untracked = git(root, "-c", "core.quotePath=false", "ls-files", "--others", "--exclude-standard", "--full-name")
                 .lines().filter { it.isNotBlank() }.mapTo(HashSet()) { File(root, it).canonicalFile }

@@ -39,4 +39,26 @@ class ChangedLinesTest {
         assertEquals(setOf(1, 2), changed[File(root, "New.kt").canonicalFile])
         assertEquals(2, changed.size)
     }
+
+    @Test
+    fun whitespaceOnlyEditsAreNotChanges(@TempDir root: File) {
+        fun git(vararg args: String) {
+            val process = ProcessBuilder(listOf("git", "-c", "user.name=t", "-c", "user.email=t@t", "-c", "commit.gpgsign=false") + args)
+                .directory(root).redirectErrorStream(true).start()
+            val output = process.inputStream.bufferedReader().readText()
+            check(process.waitFor() == 0) { output }
+        }
+        val source = File(root, "A.kt")
+        source.writeText("fun a(x: Int): Int {\n    if (x > 0) return 1\n    return 2\n}\n")
+        git("init", "-q")
+        git("add", ".")
+        git("commit", "-q", "-m", "base")
+        // Re-indented throughout, and one real change on line 3.
+        source.writeText("fun a(x: Int): Int {\n  if (x > 0) return 1\n  return 3\n}\n")
+
+        val changed = ChangedLines.since("HEAD", root)
+
+        assertEquals(setOf(source.canonicalFile), changed.changedFiles)
+        assertEquals(listOf(3), (1..4).filter { changed.contains(source, it) })
+    }
 }

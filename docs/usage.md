@@ -152,8 +152,9 @@ Descartes engine): on clikt it tests 270 functions in 9 s and lists 9. Its histo
 
 `./gradlew krisprRun -Pkrispr.diffBase=origin/main` (or `krispr { diffBase = "origin/main" }`) mutates
 only the lines added or changed between the merge base of that ref and the working tree, uncommitted
-edits and untracked files included, renames followed. It is the intended use on pull requests: a short
-list of survivors on the lines under review.
+edits and untracked files included, renames followed. Lines whose only change is whitespace (re-indenting,
+a formatter run) do not count. It is the intended use on pull requests: a short list of survivors on the
+lines under review.
 
 With no explicit `targetFiles`, `diffBase` also scopes instrumentation to the module's own changed Kotlin
 files: everything else compiles unchanged and gets no mutants, so the recording run is proportional to
