@@ -61,7 +61,7 @@ abstract class KrisprExtension {
     abstract val kotlinTarget: Property<String>
 
     /**
-     * The mutation operators, by name (see README "Operators"). Unset or empty: the default set. `DEFAULTS`
+     * The mutation operators, by name (see docs/PHILOSOPHY.md "Operators"). Unset or empty: the default set. `DEFAULTS`
      * stands for the default set, so `listOf("DEFAULTS", "EMPTY_RETURNS")` adds one opt-in operator.
      * `-Pkrispr.operators=A,B` overrides the build script.
      */
@@ -83,7 +83,7 @@ abstract class KrisprExtension {
     /** Reuse verdicts from [historyFile]. Default true; `-Pkrispr.history=false` overrides the build script. */
     abstract val useHistory: Property<Boolean>
 
-    // --- Arid code (W1): categories skipped by default, see README "Arid code". Unset means false. ---
+    // --- Arid code (W1): categories skipped by default, see docs/tuning.md "Arid code". Unset means false. ---
 
     /** Mutate `@Composable` functions and lambdas, and `@Preview` functions. */
     abstract val mutateComposables: Property<Boolean>
