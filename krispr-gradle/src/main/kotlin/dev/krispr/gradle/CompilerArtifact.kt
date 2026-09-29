@@ -55,7 +55,11 @@ internal object CompilerArtifact {
     private fun compilerEmbeddableVersion(project: Project, configurationName: String): String? {
         val configuration = project.configurations.findByName(configurationName)?.takeIf { it.isCanBeResolved } ?: return null
         val versions = runCatching {
-            configuration.resolvedConfiguration.lenientConfiguration.artifacts.map {
+            // A copy, keeping its dependencies and resolution strategy: this runs while the Kotlin plugin is still
+            // configuring, and resolving the project's own configuration then broke Kotlin 2.1 multiplatform
+            // builds ("Cannot create variant 'kotlinProjectStructureMetadata' after dependency configuration
+            // ':clikt:metadataApiElements' has been resolved", clikt on Gradle 8.7).
+            configuration.copyRecursive().resolvedConfiguration.lenientConfiguration.artifacts.map {
                 Triple(it.moduleVersion.id.group, it.moduleVersion.id.name, it.moduleVersion.id.version)
             }
         }.getOrElse { emptyList() }
