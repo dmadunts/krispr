@@ -1,5 +1,8 @@
 # Real-world validation
 
+These are the first runs on real projects, from before the comparison with PIT; see
+[evidence.md](evidence.md) for that, the diff-mode replay and the real-bug study.
+
 Krispr was run on three open-source Kotlin Multiplatform libraries, each scoped to one module's
 JVM target and applied through a composite build (`includeBuild("../../krispr")` in
 `pluginManagement` and at the root, plus `id("dev.krispr")` in the module). The targets were not

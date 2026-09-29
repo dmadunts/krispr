@@ -1,0 +1,499 @@
+[
+ {
+  "fix": "57c7b469",
+  "subject": "Don't escape `get` and `set` operator function names",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/FunSpec.kt"
+  ],
+  "seconds": 200,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/FunSpec.kt",
+    "fix_lines": [
+     21,
+     22,
+     166
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 98,
+    "flagged_lines": 14,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "d6e3b13a",
+  "subject": "Handle recursively bound generics in TypeVariableName equals/hashCode",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/ClassName.kt",
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/LambdaTypeName.kt",
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/ParameterizedTypeName.kt",
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeName.kt",
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeVariableName.kt",
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/WildcardTypeName.kt"
+  ],
+  "seconds": 292,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/ClassName.kt",
+    "fix_lines": [
+     192,
+     193,
+     194,
+     195
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 49,
+    "flagged_lines": 7,
+    "p_random": 0.0
+   },
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/LambdaTypeName.kt",
+    "fix_lines": [
+     105,
+     106,
+     107,
+     108,
+     112,
+     113,
+     114,
+     115
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 11,
+    "flagged_lines": 0,
+    "p_random": 0.0
+   },
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/ParameterizedTypeName.kt",
+    "fix_lines": [
+     105,
+     106,
+     107,
+     108,
+     112,
+     113,
+     114
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 21,
+    "flagged_lines": 6,
+    "p_random": 0.0
+   },
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeName.kt",
+    "fix_lines": [
+     25,
+     26,
+     96,
+     98,
+     99,
+     100,
+     101,
+     102,
+     105,
+     236,
+     237
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 28,
+    "flagged_lines": 11,
+    "p_random": 0.0
+   },
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeVariableName.kt",
+    "fix_lines": [
+     74,
+     75,
+     76,
+     77,
+     82,
+     92
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 13,
+    "flagged_lines": 8,
+    "p_random": 0.0
+   },
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/WildcardTypeName.kt",
+    "fix_lines": [
+     56,
+     57,
+     58,
+     59,
+     63,
+     64
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 5,
+    "flagged_lines": 1,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "c5b83a53",
+  "subject": "Keep // prefix on wrapped file comment lines",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt"
+  ],
+  "seconds": 350,
+  "outcome": "flagged",
+  "p_random_hit": 0.223,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt",
+    "fix_lines": [
+     647,
+     648
+    ],
+    "fix_lines_mutated": [
+     647,
+     648
+    ],
+    "fix_lines_flagged": [
+     647,
+     648
+    ],
+    "fix_line_statuses": [
+     "KILLED",
+     "SURVIVED"
+    ],
+    "mutated_lines": 195,
+    "flagged_lines": 23,
+    "p_random": 0.22252180808881838
+   }
+  ]
+ },
+ {
+  "fix": "84091197",
+  "subject": "Fix: generate imports for extension members used in KDocs",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt"
+  ],
+  "seconds": 355,
+  "outcome": "flagged",
+  "p_random_hit": 0.123,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt",
+    "fix_lines": [
+     507,
+     508,
+     509,
+     510
+    ],
+    "fix_lines_mutated": [
+     509
+    ],
+    "fix_lines_flagged": [
+     509
+    ],
+    "fix_line_statuses": [
+     "KILLED",
+     "SURVIVED"
+    ],
+    "mutated_lines": 195,
+    "flagged_lines": 24,
+    "p_random": 0.12307692307692308
+   }
+  ]
+ },
+ {
+  "fix": "28baadf0",
+  "subject": "Escape /* and */ when emitting Kdoc (#2258)",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt"
+  ],
+  "seconds": 428,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt",
+    "fix_lines": [
+     25,
+     26,
+     602,
+     603
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 193,
+    "flagged_lines": 24,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "80407a48",
+  "subject": "emitNullable correctly when deferring type in CodeWriter",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt"
+  ],
+  "seconds": 485,
+  "outcome": "not flagged",
+  "p_random_hit": 0.233,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt",
+    "fix_lines": [
+     339,
+     340,
+     397,
+     398
+    ],
+    "fix_lines_mutated": [
+     339,
+     340
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 194,
+    "flagged_lines": 24,
+    "p_random": 0.23267987821163394
+   }
+  ]
+ },
+ {
+  "fix": "b22e089b",
+  "subject": "Don't look for illegal characters in escaped identifiers (#2204)",
+  "files": [
+   "kotlinpoet/src/commonMain/kotlin/com/squareup/kotlinpoet/Util.kt"
+  ],
+  "seconds": 373,
+  "outcome": "not flagged",
+  "p_random_hit": 0.138,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/commonMain/kotlin/com/squareup/kotlinpoet/Util.kt",
+    "fix_lines": [
+     277
+    ],
+    "fix_lines_mutated": [
+     277
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 58,
+    "flagged_lines": 8,
+    "p_random": 0.13793103448275867
+   }
+  ]
+ },
+ {
+  "fix": "0005ab6c",
+  "subject": "Fix FunSpec.beginControlFlow to accept nullable args (#2180)",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/FunSpec.kt"
+  ],
+  "seconds": 483,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/FunSpec.kt",
+    "fix_lines": [
+     546
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 100,
+    "flagged_lines": 14,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "90a3132f",
+  "subject": "Handle recursively bound generics in KType.asTypeName",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/ParameterizedTypeName.kt",
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeVariableName.kt"
+  ],
+  "seconds": 392,
+  "outcome": "flagged",
+  "p_random_hit": 0.895,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/ParameterizedTypeName.kt",
+    "fix_lines": [
+     222,
+     223,
+     233,
+     237,
+     265,
+     268,
+     275
+    ],
+    "fix_lines_mutated": [
+     233,
+     237,
+     268
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 21,
+    "flagged_lines": 5,
+    "p_random": 0.5789473684210527
+   },
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeVariableName.kt",
+    "fix_lines": [
+     26,
+     290,
+     291,
+     292,
+     293,
+     294,
+     295,
+     296,
+     297,
+     298,
+     299
+    ],
+    "fix_lines_mutated": [
+     293
+    ],
+    "fix_lines_flagged": [
+     293
+    ],
+    "fix_line_statuses": [
+     "SURVIVED"
+    ],
+    "mutated_lines": 12,
+    "flagged_lines": 9,
+    "p_random": 0.75
+   }
+  ]
+ },
+ {
+  "fix": "ad60514d",
+  "subject": "Fix annotation array args with annotation elements (#2142)",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/AnnotationSpec.kt"
+  ],
+  "seconds": 276,
+  "outcome": "not flagged",
+  "p_random_hit": 0.042,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/AnnotationSpec.kt",
+    "fix_lines": [
+     148,
+     149
+    ],
+    "fix_lines_mutated": [
+     149
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 24,
+    "flagged_lines": 1,
+    "p_random": 0.04166666666666663
+   }
+  ]
+ },
+ {
+  "fix": "527e8511",
+  "subject": "Fix exception tying to generate empty fun interface which inherit another interface  (#2075)",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeSpec.kt"
+  ],
+  "seconds": 604,
+  "outcome": "not flagged",
+  "p_random_hit": 0.112,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeSpec.kt",
+    "fix_lines": [
+     876,
+     877,
+     878
+    ],
+    "fix_lines_mutated": [
+     876
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 170,
+    "flagged_lines": 19,
+    "p_random": 0.11176470588235299
+   }
+  ]
+ },
+ {
+  "fix": "68731fdf",
+  "subject": "Correct `MutableEntry` name (#2061)",
+  "files": [
+   "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeName.kt"
+  ],
+  "seconds": 214,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "kotlinpoet/src/jvmMain/kotlin/com/squareup/kotlinpoet/TypeName.kt",
+    "fix_lines": [
+     295
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 25,
+    "flagged_lines": 12,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "4ee8fc4b",
+  "subject": "Fix KT-18706 in CodeWriter.generateImports",
+  "files": [
+   "kotlinpoet/src/commonMain/kotlin/com/squareup/kotlinpoet/CodeWriter.kt",
+   "kotlinpoet/src/commonMain/kotlin/com/squareup/kotlinpoet/Util.kt"
+  ],
+  "seconds": 87,
+  "outcome": "build or run failed"
+ },
+ {
+  "fix": "a162882a",
+  "subject": "Fix #1919 Small double values are set to zero in %L translation (#1927)",
+  "files": [
+   "kotlinpoet/src/commonMain/kotlin/com/squareup/kotlinpoet/CodeBlock.kt"
+  ],
+  "seconds": 74,
+  "outcome": "build or run failed"
+ }
+]

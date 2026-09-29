@@ -36,9 +36,11 @@ case "$name" in
     sed -i "s/^kotlin = \".*\"/kotlin = \"$kotlin\"/" gradle/libs.versions.toml
     add_composite settings.gradle.kts
     add_plugin clikt/build.gradle.kts
-    # Tests moved to a separate :test module in 2024; before that they are clikt's own commonTest.
+    # clikt's tests have lived in :test (from late 2024), in :clikt-mordant (mid 2024) and in clikt itself.
     if grep -q 'include("test")' settings.gradle.kts; then
       printf '\nkrispr { testProject.set(":test") }\n' >> clikt/build.gradle.kts
+    elif [ ! -d clikt/src/commonTest ] && [ -d clikt-mordant/src/commonTest ]; then
+      printf '\nkrispr { testProject.set(":clikt-mordant") }\n' >> clikt/build.gradle.kts
     fi ;;
   turbine)
     # Groovy DSL; already on Kotlin 2.4.20.
@@ -47,6 +49,8 @@ case "$name" in
     printf "\nincludeBuild('%s')\n" "$krispr" >> settings.gradle
     sed -i "0,/^plugins {/s//plugins {\n  id 'dev.krispr'/" build.gradle ;;
   kotlinpoet)
+    # A bumped compiler brings new warnings, which kotlinpoet's allWarningsAsErrors turns into failures.
+    [ "$kotlin" != "$own" ] && sed -i 's/allWarningsAsErrors = true/allWarningsAsErrors = false/' kotlinpoet/build.gradle.kts
     sed -i "s/^kotlin = \".*\"/kotlin = \"$kotlin\"/" gradle/libs.versions.toml
     add_composite settings.gradle.kts
     add_plugin kotlinpoet/build.gradle.kts ;;

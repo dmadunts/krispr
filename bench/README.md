@@ -12,5 +12,14 @@ of other projects; nothing here is part of the Krispr build.
 | `sample.py`, `rating-rubric.md` | A tool-blind, shuffled survivor sample and the rubric its raters follow |
 | `replay-diff.py` | Diff mode (`diffBase = C^`) on each of a list of merged commits |
 | `bug-study.py` | Before each bug fix, whether Krispr flagged the lines the fix changed, against a random baseline |
+| `score-ratings.py` | Unblinds the head-to-head ratings: agreement, kappa, classes per tool and target |
+| `diff-items.py` | The survivors diff mode would post on each replayed commit, as items to rate |
+| `summarise-studies.py` | Tables and totals for the bug study and the diff replay |
 
-`results/` keeps the small outputs the doc quotes (summaries, samples, ratings, per-commit results).
+`results/` keeps the small outputs the doc quotes:
+
+- `head-to-head/`: per-target summaries, the blind sample, both raters, the adjudication and the key;
+- `diff-replay/`: per-commit results and `diff.md` comments, and the ratings of their survivors;
+- `bugs/`: per-fix results.
+
+The runs need network access to Maven Central and GitHub, and PIT's jars in `$PIT_HOME` (see `run-pit.sh`).

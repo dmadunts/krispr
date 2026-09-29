@@ -1,0 +1,285 @@
+[
+ {
+  "fix": "8b8d90af",
+  "subject": "Concat adjacent quoted tokens in atfiles (#632)",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/atfile.kt"
+  ],
+  "seconds": 136,
+  "outcome": "not flagged",
+  "p_random_hit": 0.731,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/atfile.kt",
+    "fix_lines": [
+     13,
+     14,
+     33,
+     34,
+     40,
+     41,
+     51,
+     52,
+     57,
+     59,
+     60,
+     64,
+     65,
+     75
+    ],
+    "fix_lines_mutated": [
+     34,
+     51,
+     57,
+     75
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 23,
+    "flagged_lines": 6,
+    "p_random": 0.7312252964426877
+   }
+  ]
+ },
+ {
+  "fix": "3d8a8427",
+  "subject": "Fix subcommand localization inheritance (#588)",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/core/Context.kt"
+  ],
+  "seconds": 497,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/core/Context.kt",
+    "fix_lines": [
+     375
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 40,
+    "flagged_lines": 14,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "14182373",
+  "subject": "Support spaces in bash completion file names (#576)",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/completion/BashCompletionGenerator.kt"
+  ],
+  "seconds": 98,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/completion/BashCompletionGenerator.kt",
+    "fix_lines": [
+     21,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     236
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 30,
+    "flagged_lines": 8,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "74ef98ee",
+  "subject": "Quote argument names in bash completion",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/completion/BashCompletionGenerator.kt"
+  ],
+  "seconds": 101,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/completion/BashCompletionGenerator.kt",
+    "fix_lines": [
+     227
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 30,
+    "flagged_lines": 8,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "8f3668bd",
+  "subject": "Fix argfiles specified after subcommands (#574)",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/core/Context.kt"
+  ],
+  "seconds": 193,
+  "outcome": "no mutant on the fix lines",
+  "p_random_hit": 0.0,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/core/Context.kt",
+    "fix_lines": [
+     320
+    ],
+    "fix_lines_mutated": [],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [],
+    "mutated_lines": 40,
+    "flagged_lines": 14,
+    "p_random": 0.0
+   }
+  ]
+ },
+ {
+  "fix": "7e838870",
+  "subject": "Fix parsing multi subcommands with optional args (#540)",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/ParserInternals.kt"
+  ],
+  "seconds": 342,
+  "outcome": "flagged",
+  "p_random_hit": 0.21,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/ParserInternals.kt",
+    "fix_lines": [
+     80
+    ],
+    "fix_lines_mutated": [
+     80
+    ],
+    "fix_lines_flagged": [
+     80
+    ],
+    "fix_line_statuses": [
+     "SURVIVED"
+    ],
+    "mutated_lines": 100,
+    "flagged_lines": 21,
+    "p_random": 0.20999999999999996
+   }
+  ]
+ },
+ {
+  "fix": "015ee1d5",
+  "subject": "Don't print help on empty args when envvars are present (#532)",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/ParserInternals.kt"
+  ],
+  "seconds": 196,
+  "outcome": "not flagged",
+  "p_random_hit": 0.208,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/ParserInternals.kt",
+    "fix_lines": [
+     4,
+     5,
+     152
+    ],
+    "fix_lines_mutated": [
+     152
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 101,
+    "flagged_lines": 21,
+    "p_random": 0.20792079207920788
+   }
+  ]
+ },
+ {
+  "fix": "becce2e6",
+  "subject": "Finalize eager options before any commands (#547)",
+  "files": [
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/CommandLineParser.kt",
+   "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/Invocation.kt"
+  ],
+  "seconds": 64,
+  "outcome": "flagged",
+  "p_random_hit": 0.659,
+  "files_detail": [
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/CommandLineParser.kt",
+    "fix_lines": [
+     81,
+     103,
+     108,
+     110,
+     111,
+     113,
+     114,
+     116,
+     119,
+     120,
+     121,
+     124,
+     125,
+     126,
+     127,
+     128,
+     129,
+     134,
+     135,
+     156,
+     157
+    ],
+    "fix_lines_mutated": [
+     125,
+     128,
+     134
+    ],
+    "fix_lines_flagged": [],
+    "fix_line_statuses": [
+     "KILLED"
+    ],
+    "mutated_lines": 26,
+    "flagged_lines": 5,
+    "p_random": 0.4884615384615385
+   },
+   {
+    "file": "clikt/src/commonMain/kotlin/com/github/ajalt/clikt/parsers/Invocation.kt",
+    "fix_lines": [
+     98,
+     99,
+     119,
+     121
+    ],
+    "fix_lines_mutated": [
+     119
+    ],
+    "fix_lines_flagged": [
+     119
+    ],
+    "fix_line_statuses": [
+     "KILLED",
+     "SURVIVED"
+    ],
+    "mutated_lines": 6,
+    "flagged_lines": 2,
+    "p_random": 0.33333333333333337
+   }
+  ]
+ }
+]

@@ -15,10 +15,20 @@ Krispr is a prototype, version 0.1.
 
 ## Does it work?
 
-[docs/evidence.md](docs/evidence.md) is the evidence so far. It includes a head-to-head against PIT
-on the same code, a replay of diff mode on merged pull requests, and a check against real bug fixes.
-[docs/validation.md](docs/validation.md) has the earlier runs on kotlinpoet, kotlin-result, clikt
-and nowinandroid.
+[docs/evidence.md](docs/evidence.md) compares Krispr with PIT 1.30 on kotlin-result, clikt and turbine,
+with the same tests on the same machine. Two raters (Claude subagents, not developers; see the page's
+caveats), blind to which tool produced each survivor, rated 147 of them:
+
+| | Krispr | PIT |
+|---|---|---|
+| Survivors that are a real test gap | **61%** (95% CI 49–71%) | 14% (8–23%) |
+| Survivors that are compiler or inlined code | **0%** (0–5%) | 75% (64–84%) |
+| Mutants in `inline` functions left untested (kotlin-result) | 4 of 245 | 248 of 255 |
+
+On clikt that comes to about 164 real test gaps from Krispr against 55 from PIT. Replayed on 45 merged pull
+requests, diff mode reported nothing on 33 and 49 survivors in all, 65% of them real gaps. A check against
+22 real bug fixes was inconclusive. The page also covers where Krispr is slower than PIT, what it misses,
+and what to fix next. [docs/validation.md](docs/validation.md) has the earlier runs, including nowinandroid.
 
 ## Quick start
 

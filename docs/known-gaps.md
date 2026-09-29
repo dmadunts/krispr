@@ -7,6 +7,10 @@
   or those of one `testProject`. JS, Wasm and native tests of a multiplatform module do not count
   (see [kmp.md](kmp.md)).
   TestNG is not supported.
+  A test task left on Gradle's default JUnit 4 framework gets the Vintage engine in krispr's runs; if its
+  classpath has no `junit:junit` (a module with no JVM tests of its own), the run fails with Vintage's
+  "junit-vintage-engine is present but junit:junit is not" instead of saying there are no tests. Point
+  `testProject` at the module whose tests exercise the code.
 - **Cross-module test runs** compile the test project against the instrumented jar in its normal
   build directory. Its next normal build recompiles, because that input has changed.
 - **Filters**: an `--tests`/`filter` include that names a method selects the whole class, and a
