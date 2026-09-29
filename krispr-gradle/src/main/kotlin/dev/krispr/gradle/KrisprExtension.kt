@@ -13,9 +13,10 @@ abstract class KrisprExtension {
     abstract val timeoutConstantMillis: Property<Long>
 
     /**
-     * No mutant run times out sooner than this. Default 10000: a fresh JVM on a busy host can take
-     * several seconds to start Robolectric before its first test, which a short test's timeout would
-     * not cover (#34). A reused worker's timeout is also retried once in a fresh JVM with twice the time.
+     * No mutant run times out sooner than this. Unset (the default): 10000 when the module's tests use
+     * Robolectric, since a fresh JVM on a busy host can take several seconds to start it before the first
+     * test, which a short test's timeout would not cover (#34); no floor for plain JVM tests. A reused
+     * worker's timeout is also retried once in a fresh JVM with twice the time.
      */
     abstract val timeoutMinimumMillis: Property<Long>
 

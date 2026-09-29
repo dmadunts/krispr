@@ -49,8 +49,7 @@ class KrisprGradlePlugin : KotlinCompilerPluginSupportPlugin {
         // PIT's defaults.
         extension.timeoutFactor.convention(1.25)
         extension.timeoutConstantMillis.convention(4_000L)
-        // A fresh JVM's Robolectric start-up on a busy host (#34).
-        extension.timeoutMinimumMillis.convention(10_000L)
+        // timeoutMinimumMillis has no convention: unset, the run task picks Timeouts.defaultMinimum.
         extension.threads.convention(0)
         extension.maxConcurrentJvms.convention(0)
         extension.forkJvmTuning.convention(KrisprForkTask.TUNING_AUTO)

@@ -124,7 +124,8 @@ The run prints how many mutants the rules excluded; they are left out of the rep
   went from 207 s to 136 s of mutant time and clikt from 22.9 s to 22.2 s.
 - **Per-mutant timeouts** come from the recorded own time of that mutant's tests plus the measured
   start-up of the JVM that runs it, times `timeoutFactor` plus `timeoutConstantMillis` (1.25 and
-  4000 ms, PIT's defaults), capped by the baseline's and never below `timeoutMinimumMillis` (10 s).
+  4000 ms, PIT's defaults), capped by the baseline's and never below `timeoutMinimumMillis` (by default 10 s when the module's tests use
+  Robolectric, whose fresh-JVM start-up a short test's timeout would not cover, and no floor otherwise).
   Start-up is measured per runner: a fresh JVM's (JVM start and Robolectric sandbox, from the
   baseline fork), a new worker's and a warm worker's (from the reuse check's two rounds). A mutant that
   times out in a reused worker runs once more in a fresh JVM with twice a fresh JVM's timeout, and
