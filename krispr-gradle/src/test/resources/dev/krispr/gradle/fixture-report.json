@@ -1,0 +1,73 @@
+{
+    "maxSurvivorsPerFile": 2,
+    "summary": {
+        "total": 10,
+        "wallMillis": 12345,
+        "killed": 2,
+        "valid": 9,
+        "covered": 8,
+        "mutationScore": 22,
+        "coveredScore": 25,
+        "KILLED": 1,
+        "TIMED_OUT": 1,
+        "SURVIVED": 4,
+        "NO_COVERAGE": 1,
+        "NOT_MEASURED": 1,
+        "UNKNOWN": 1,
+        "RUN_ERROR": 1
+    },
+    "mutants": [
+        {
+            "id": 1, "file": "src/main/kotlin/Foo.kt", "line": 10, "column": 8,
+            "operator": "CONDITIONALS_BOUNDARY", "description": "a < b → a <= b", "status": "SURVIVED",
+            "tests": ["FooTest.test"], "killedBy": null, "millis": 12
+        },
+        {
+            "id": 2, "file": "src/main/kotlin/Foo.kt", "line": 20, "column": 12,
+            "operator": "MATH", "description": "a + b → a - b", "status": "SURVIVED",
+            "tests": ["FooTest.test"], "killedBy": null, "millis": 14
+        },
+        {
+            "id": 3, "file": "src/main/kotlin/Foo.kt", "line": 25, "column": 5,
+            "operator": "NEGATE_IF", "description": "if (x) → if (!(x))", "status": "SURVIVED",
+            "tests": ["FooTest.test"], "killedBy": null, "millis": 9
+        },
+        {
+            "id": 10, "file": "src/main/kotlin/Foo.kt", "line": 45, "column": 9,
+            "operator": "INCREMENTS", "description": "i++ → i--", "status": "SURVIVED",
+            "tests": ["FooTest.test"], "killedBy": null, "millis": 11
+        },
+        {
+            "id": 4, "file": "src/main/kotlin/Foo.kt", "line": 30, "column": 3,
+            "operator": "NEGATE_EQUALITY", "description": "a == b → a != b", "status": "KILLED",
+            "tests": ["FooTest.test"], "killedBy": "FooTest.test", "millis": 8, "runner": "worker"
+        },
+        {
+            "id": 5, "file": "src/main/kotlin/Foo.kt", "line": 40, "column": 3,
+            "operator": "MATH", "description": "a * b → a / b", "status": "NOT_MEASURED",
+            "tests": ["FooScreenshotTest.capture"], "killedBy": null, "millis": 0,
+            "reason": "reached only by excluded tests: screenshot test"
+        },
+        {
+            "id": 6, "file": "src/main/kotlin/Bar.kt", "line": 5, "column": 3,
+            "operator": "BOOLEAN_LOGIC", "description": "a && b → a || b", "status": "UNKNOWN",
+            "tests": ["BarTest.test"], "killedBy": null, "millis": 6,
+            "reason": "its tests did not activate the mutant, twice"
+        },
+        {
+            "id": 7, "file": "src/main/kotlin/Bar.kt", "line": 8, "column": 3,
+            "operator": "MATH", "description": "a - b → a + b", "status": "NO_COVERAGE",
+            "tests": [], "killedBy": null, "millis": 0
+        },
+        {
+            "id": 8, "file": "src/main/kotlin/Bar.kt", "line": 12, "column": 3,
+            "operator": "INVERT_NEGS", "description": "-x → x", "status": "RUN_ERROR",
+            "tests": ["BarTest.test"], "killedBy": null, "millis": 3, "reason": "exit 2"
+        },
+        {
+            "id": 9, "file": "src/main/kotlin/Bar.kt", "line": 15, "column": 3,
+            "operator": "RETURN_VALUE", "description": "return true → return false", "status": "TIMED_OUT",
+            "tests": ["BarTest.test"], "killedBy": "BarTest.test", "millis": 5000, "runner": "fork"
+        }
+    ]
+}

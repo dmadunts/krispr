@@ -1,0 +1,86 @@
+package dev.krispr.gradle
+
+import org.gradle.api.GradleException
+import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.provider.ListProperty
+import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Internal
+import org.gradle.api.tasks.OutputFile
+import org.gradle.api.tasks.TaskAction
+import java.util.Properties
+
+/**
+ * Runs the whole test suite once in a forked JVM against the instrumented classes, recording which
+ * tests reach which mutants. Uses the same runner as the mutant forks, with the test task's filters
+ * applied, and forces serial execution so each hit is attributed to the test that caused it.
+ */
+abstract class KrisprRecordTask : KrisprForkTask() {
+    @get:Input abstract val includeTags: ListProperty<String>
+    @get:Input abstract val excludeTags: ListProperty<String>
+    @get:Input abstract val includeEngines: ListProperty<String>
+    @get:Input abstract val excludeEngines: ListProperty<String>
+
+    /** Regexes over fully qualified class names, converted from the test task's patterns. */
+    @get:Input abstract val includeClasses: ListProperty<String>
+    @get:Input abstract val excludeClasses: ListProperty<String>
+
+    /** False when this invocation did not instrument the main compilation; fails the task with advice. */
+    @get:Internal abstract val instrumented: Property<Boolean>
+
+    @get:OutputFile abstract val coverage: RegularFileProperty
+
+    init {
+        outputs.upToDateWhen { false }
+    }
+
+    @TaskAction
+    fun record() {
+        if (!instrumented.get()) {
+            throw GradleException(
+                "krispr: this invocation did not instrument the main compilation. Request the task by its " +
+                    "full name (krisprRun), or pass -P${KrisprGradlePlugin.INSTRUMENT_PROPERTY}=true.",
+            )
+        }
+        val coverageFile = coverage.get().asFile.apply { delete(); parentFile.mkdirs() }
+        val testsFile = testsFile(coverageFile).apply { delete() }
+        val logs = coverageFile.resolveSibling("record").apply { deleteRecursively(); mkdirs() }
+        val filters = logs.resolve("filters.properties")
+        Properties().apply {
+            setProperty("includeTags", includeTags.get().joinToString("\n"))
+            setProperty("excludeTags", excludeTags.get().joinToString("\n"))
+            setProperty("includeEngines", includeEngines.get().joinToString("\n"))
+            setProperty("excludeEngines", excludeEngines.get().joinToString("\n"))
+            setProperty("includeClasses", includeClasses.get().joinToString("\n"))
+            setProperty("excludeClasses", excludeClasses.get().joinToString("\n"))
+            filters.outputStream().use { store(it, "krispr test filters") }
+        }
+        val result = withJvmSlot {
+            forkRunner(logs).run(
+            name = "record",
+            activeMutant = null,
+            selectors = listOf("*"),
+            timeoutMillis = 60 * 60_000L,
+            extraJvmArgs = listOf(
+                "-Dkrispr.record=${coverageFile.absolutePath}",
+                "-Dkrispr.recordTests=${testsFile.absolutePath}",
+                "-Dkrispr.filters=${filters.absolutePath}",
+                // Kotest runs specs concurrently when configured to; attribution needs one at a time.
+                "-Dkotest.framework.parallelism=1",
+                ),
+            )
+        }
+        when (result.exitCode) {
+            0 -> logger.lifecycle("krispr: recorded coverage in ${result.millis} ms")
+            1 -> throw GradleException("krispr: tests fail against the instrumented classes with no mutant active; see ${result.log}")
+            // No tests: every mutant is NO_COVERAGE, and a module without mutants still gets its empty report.
+            2 -> logger.lifecycle("krispr: the recording run found no tests; see ${result.log}").also { coverageFile.createNewFile() }
+            else -> throw GradleException("krispr: the recording run failed (exit ${result.exitCode}); see ${result.log}")
+        }
+    }
+
+    internal companion object {
+        /** Each test's class, method and duration, next to the coverage file; see the runtime's RecordingListener. */
+        fun testsFile(coverage: java.io.File) = coverage.resolveSibling("tests.tsv")
+    }
+}

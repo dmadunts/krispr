@@ -1,0 +1,4 @@
+<resources>
+    <string name="items_in_cart">%1$d items in your cart</string>
+    <string name="cart_empty">Your cart is empty</string>
+</resources>
