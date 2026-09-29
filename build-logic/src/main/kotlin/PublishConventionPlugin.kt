@@ -13,6 +13,9 @@ import org.gradle.api.Project
  */
 class PublishConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) {
+        // Included in another build (the composite-build way of using krispr before a release), nothing is
+        // published, and the publishing plugin needs Gradle 8.13+ where krispr itself does not.
+        if (project.gradle.parent != null) return
         project.pluginManager.apply("com.vanniktech.maven.publish")
         project.extensions.getByType(MavenPublishBaseExtension::class.java).apply {
             publishToMavenCentral()
