@@ -1,0 +1,77 @@
+{
+  "krispr": {
+    "mutants": 322,
+    "killed": 292,
+    "survived": 20,
+    "no_coverage": 10,
+    "other": {},
+    "score_of_covered": 93.6,
+    "survivors_per_100_mutants": 6.2
+  },
+  "pit": {
+    "mutants": 363,
+    "killed": 79,
+    "survived": 13,
+    "no_coverage": 271,
+    "other": {},
+    "score_of_covered": 85.9,
+    "survivors_per_100_mutants": 3.6
+  },
+  "pit_no_coverage_in_inline_functions": 248,
+  "krispr_in_inline_functions": {
+    "mutants": 245,
+    "killed": 229,
+    "survived": 12,
+    "no_coverage": 4,
+    "other": {},
+    "score_of_covered": 95.0,
+    "survivors_per_100_mutants": 4.9
+  },
+  "pit_in_inline_functions": {
+    "mutants": 255,
+    "killed": 6,
+    "survived": 1,
+    "no_coverage": 248,
+    "other": {},
+    "score_of_covered": 85.7,
+    "survivors_per_100_mutants": 0.4
+  },
+  "pit_mechanical_junk": {
+    "inlined code (line past end of file)": 149,
+    "null-check intrinsic": 2
+  },
+  "pit_mechanical_junk_survivors": {
+    "inlined code (line past end of file)": 8,
+    "null-check intrinsic": 1
+  },
+  "pit_mechanical_junk_killed": 20,
+  "pit_generated_member_mutants": 0,
+  "pit_generated_member_survivors": 0,
+  "pit_generated_by_member": {},
+  "pit_by_mutator": {
+    "NegateConditionalsMutator": 253,
+    "PrimitiveReturnsMutator": 3,
+    "IncrementsMutator": 21,
+    "NullReturnValsMutator": 29,
+    "ConditionalsBoundaryMutator": 12,
+    "VoidMethodCallMutator": 15,
+    "MathMutator": 4,
+    "BooleanFalseReturnValsMutator": 3,
+    "BooleanTrueReturnValsMutator": 6,
+    "EmptyObjectReturnValsMutator": 17
+  },
+  "krispr_by_operator": {
+    "CONDITION_TRUE": 139,
+    "CONDITION_FALSE": 113,
+    "REMOVE_ASSIGNMENT": 2,
+    "NULL_RETURNS": 17,
+    "RETURN_VALUE": 10,
+    "NEGATE_IF": 5,
+    "REMOVE_CALL": 5,
+    "BOOLEAN_LOGIC": 14,
+    "NEGATE_EQUALITY": 9,
+    "INCREMENTS": 6,
+    "MATH": 2
+  },
+  "unresolved_sources": []
+}

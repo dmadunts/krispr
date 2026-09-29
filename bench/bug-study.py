@@ -72,6 +72,10 @@ def run(target, checkout, module, out, fix):
          "-Pkrispr.history=false", f"-Pkrispr.targetFiles={','.join(rel)}", "--console=plain"],
         cwd=checkout,
     ).returncode == 0
+    # Each revision may bring its own Gradle and Kotlin versions, and idle daemons of each add up past the
+    # container's memory.
+    subprocess.run(["./gradlew", "--stop"], cwd=checkout, capture_output=True)
+    subprocess.run(["pkill", "-f", "KotlinCompileDaemon"], capture_output=True)
     result["seconds"] = round(time.time() - start)
     report_path = os.path.join(checkout, module, "build/krispr/report.json")
     if not ok or not os.path.exists(report_path):
@@ -109,12 +113,18 @@ def run(target, checkout, module, out, fix):
 def main():
     target, checkout, module, out, *fixes = sys.argv[1:]
     os.makedirs(out, exist_ok=True)
+    path = os.path.join(out, "results.json")
+    # Resumable: keep finished fixes, redo the ones whose build or run failed.
+    done = {r["fix"]: r for r in (json.load(open(path)) if os.path.exists(path) else []) if r["outcome"] != "build or run failed"}
     results = []
     for fix in fixes:
+        if fix in done:
+            results.append(done[fix])
+            continue
         r = run(target, checkout, module, out, fix)
         print(json.dumps({k: r[k] for k in ("fix", "subject", "outcome") if k in r} | {"p": r.get("p_random_hit")}), flush=True)
         results.append(r)
-        json.dump(results, open(os.path.join(out, "results.json"), "w"), indent=1)
+        json.dump(results + [done[f] for f in done if f not in {x["fix"] for x in results}], open(path, "w"), indent=1)
     sh("git", "checkout", "-q", "-f", "-", cwd=checkout, check=False)
 
 

@@ -1,0 +1,38 @@
+{
+ "krispr|clikt": {
+  "a": 25,
+  "b": 5
+ },
+ "krispr|all": {
+  "a": 45,
+  "b": 29
+ },
+ "krispr|kotlin-result": {
+  "b": 17,
+  "a": 3
+ },
+ "pit|turbine": {
+  "c": 25,
+  "b": 3,
+  "a": 2
+ },
+ "pit|all": {
+  "c": 55,
+  "b": 8,
+  "a": 10
+ },
+ "pit|clikt": {
+  "c": 21,
+  "b": 3,
+  "a": 6
+ },
+ "krispr|turbine": {
+  "a": 17,
+  "b": 7
+ },
+ "pit|kotlin-result": {
+  "c": 9,
+  "a": 2,
+  "b": 2
+ }
+}

@@ -1,0 +1,88 @@
+{
+  "krispr": {
+    "mutants": 1495,
+    "killed": 1169,
+    "survived": 197,
+    "no_coverage": 129,
+    "other": {},
+    "score_of_covered": 85.6,
+    "survivors_per_100_mutants": 13.2
+  },
+  "pit": {
+    "mutants": 2072,
+    "killed": 1331,
+    "survived": 273,
+    "no_coverage": 468,
+    "other": {},
+    "score_of_covered": 83.0,
+    "survivors_per_100_mutants": 13.2
+  },
+  "pit_no_coverage_in_inline_functions": 134,
+  "krispr_in_inline_functions": {
+    "mutants": 44,
+    "killed": 26,
+    "survived": 13,
+    "no_coverage": 5,
+    "other": {},
+    "score_of_covered": 66.7,
+    "survivors_per_100_mutants": 29.5
+  },
+  "pit_in_inline_functions": {
+    "mutants": 196,
+    "killed": 31,
+    "survived": 31,
+    "no_coverage": 134,
+    "other": {},
+    "score_of_covered": 50.0,
+    "survivors_per_100_mutants": 15.8
+  },
+  "pit_mechanical_junk": {
+    "inlined code (line past end of file)": 244,
+    "null-check intrinsic": 39,
+    "coroutine state machine": 15
+  },
+  "pit_mechanical_junk_survivors": {
+    "null-check intrinsic": 30,
+    "inlined code (line past end of file)": 96,
+    "coroutine state machine": 10
+  },
+  "pit_mechanical_junk_killed": 124,
+  "pit_generated_member_mutants": 0,
+  "pit_generated_member_survivors": 0,
+  "pit_generated_by_member": {},
+  "pit_by_mutator": {
+    "MathMutator": 61,
+    "NegateConditionalsMutator": 982,
+    "VoidMethodCallMutator": 214,
+    "ConditionalsBoundaryMutator": 77,
+    "NullReturnValsMutator": 182,
+    "BooleanTrueReturnValsMutator": 50,
+    "BooleanFalseReturnValsMutator": 42,
+    "IncrementsMutator": 12,
+    "EmptyObjectReturnValsMutator": 430,
+    "PrimitiveReturnsMutator": 22
+  },
+  "krispr_by_operator": {
+    "REMOVE_CALL": 111,
+    "REMOVE_CHAIN_CALL": 56,
+    "RETURN_VALUE": 85,
+    "CONDITIONALS_BOUNDARY": 56,
+    "ARGUMENT_PROPAGATION": 51,
+    "BOOLEAN_LOGIC": 96,
+    "CONDITION_TRUE": 285,
+    "CONDITION_FALSE": 245,
+    "EMPTY_STRING_RETURNS": 140,
+    "ELVIS": 79,
+    "NEGATE_EQUALITY": 109,
+    "SKIP_IS_BRANCH": 12,
+    "NULL_RETURNS": 43,
+    "SAFE_CALL_BODY": 5,
+    "REMOVE_ASSIGNMENT": 43,
+    "NEGATE_IF": 23,
+    "MATH": 55,
+    "CATCH_SWALLOW": 1
+  },
+  "unresolved_sources": [
+    "Comparisons.kt"
+  ]
+}

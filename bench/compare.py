@@ -94,6 +94,19 @@ def generated_member(m):
     return None
 
 
+def mechanical_junk(m):
+    """PIT mutants that are compiler or library code by construction, whatever a rater would say:
+    a line past the end of the file (stdlib or other inline code, mapped through the SMAP), a removed
+    null-check intrinsic, and coroutine state-machine plumbing (throwOnFailure, invokeSuspend's result)."""
+    if m["line"] > len(lines(m["file"])):
+        return "inlined code (line past end of file)"
+    if "kotlin/jvm/internal/Intrinsics::" in m["desc"]:
+        return "null-check intrinsic"
+    if "ResultKt::throwOnFailure" in m["desc"] or (m["method"] == "invokeSuspend" and m["op"].endswith("ReturnValsMutator")):
+        return "coroutine state machine"
+    return None
+
+
 def summarise(ms):
     c = Counter(m["status"] for m in ms)
     killed = sum(c[s] for s in KILLED)
@@ -124,6 +137,9 @@ def main():
         "pit_no_coverage_in_inline_functions": sum(in_inline_function(m["file"], m["line"]) for m in pit_nc),
         "krispr_in_inline_functions": summarise([m for m in k if in_inline_function(m["file"], m["line"])]),
         "pit_in_inline_functions": summarise([m for m in p if in_inline_function(m["file"], m["line"])]),
+        "pit_mechanical_junk": Counter(mechanical_junk(m) for m in p if mechanical_junk(m)),
+        "pit_mechanical_junk_survivors": Counter(mechanical_junk(m) for m in p if mechanical_junk(m) and m["status"] == "SURVIVED"),
+        "pit_mechanical_junk_killed": sum(1 for m in p if mechanical_junk(m) and m["status"] in KILLED),
         "pit_generated_member_mutants": len(gen),
         "pit_generated_member_survivors": sum(m["status"] == "SURVIVED" for m in gen),
         "pit_generated_by_member": Counter(generated_member(m) for m in gen),
