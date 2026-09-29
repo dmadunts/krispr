@@ -23,8 +23,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import java.io.File
 import java.util.concurrent.Callable
 
-/** Keep in sync with the root build's `version`. */
-const val KRISPR_VERSION = "0.1.0-SNAPSHOT"
 private const val GROUP = "dev.krispr"
 
 /**

@@ -3,7 +3,26 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     `java-gradle-plugin`
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.gradle.plugin.publish)
+    id("krispr.publish")
 }
+
+description = "Krispr Gradle plugin: IR-level mutation testing for Kotlin/JVM, Android and Kotlin Multiplatform"
+
+// KRISPR_VERSION comes from `version`, so the plugin always asks for the compiler and runtime it was
+// released with.
+val generateVersion = tasks.register("generateKrisprVersion") {
+    val out = layout.buildDirectory.dir("generated/krisprVersion")
+    val version = project.version.toString()
+    inputs.property("version", version)
+    outputs.dir(out)
+    doLast {
+        out.get().file("dev/krispr/gradle/KrisprVersion.kt").asFile.apply { parentFile.mkdirs() }.writeText(
+            "package dev.krispr.gradle\n\n/** Generated from the build's `version`. */\nconst val KRISPR_VERSION = \"$version\"\n",
+        )
+    }
+}
+sourceSets.main { kotlin.srcDir(generateVersion) }
 
 kotlin {
     jvmToolchain(21)
@@ -34,10 +53,15 @@ tasks.test {
 }
 
 gradlePlugin {
+    website.set("https://github.com/timusus/krispr")
+    vcsUrl.set("https://github.com/timusus/krispr")
     plugins {
         create("krispr") {
             id = "dev.krispr"
             implementationClass = "dev.krispr.gradle.KrisprGradlePlugin"
+            displayName = "Krispr"
+            description = project.description
+            tags.set(listOf("mutation-testing", "kotlin", "android", "testing", "kotlin-multiplatform"))
         }
     }
 }

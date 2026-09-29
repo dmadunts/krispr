@@ -17,6 +17,7 @@ kotlin {
 dependencies {
     // The root build puts the Kotlin Gradle plugin on the classpath; this only compiles against it.
     compileOnly(libs.kotlin.gradle.plugin)
+    implementation(libs.vanniktech.publish.plugin)
 }
 
 gradlePlugin {
@@ -24,6 +25,10 @@ gradlePlugin {
         create("compilerVariant") {
             id = "krispr.compiler-variant"
             implementationClass = "CompilerVariantPlugin"
+        }
+        create("publish") {
+            id = "krispr.publish"
+            implementationClass = "PublishConventionPlugin"
         }
     }
 }
