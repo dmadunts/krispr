@@ -1,0 +1,42 @@
+# Publishes this fork's build of krispr into the maven-repo branch when an fb-v* tag is pushed, so a project
+# can depend on it with no credentials:
+#
+#   maven("https://raw.githubusercontent.com/dmadunts/krispr/maven-repo/")
+#
+# The tag's version (fb-v0.1.0-fb.1 -> 0.1.0-fb.1) is passed to the build, so gradle.properties keeps
+# upstream's version. Upstream's release.yml reacts to v* tags and needs Maven Central secrets this fork does
+# not have, hence the different prefix.
+name: publish-maven-repo
+on:
+  push:
+    tags: ["fb-v*"]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Publish every artifact into a local Maven layout
+        run: |
+          version="${GITHUB_REF_NAME#fb-v}"
+          echo "version=$version" >> "$GITHUB_ENV"
+          ./gradlew publishToMavenLocal -Pversion="$version" -Dmaven.repo.local="$RUNNER_TEMP/repo" --console=plain --no-configuration-cache
+          find "$RUNNER_TEMP/repo/dev/krispr" -name "*$version*" | sort
+      - name: Add the artifacts to the maven-repo branch
+        run: |
+          git fetch origin maven-repo
+          git worktree add "$RUNNER_TEMP/site" origin/maven-repo
+          mkdir -p "$RUNNER_TEMP/site/dev/krispr"
+          cp -r "$RUNNER_TEMP/repo/dev/krispr/." "$RUNNER_TEMP/site/dev/krispr/"
+          cd "$RUNNER_TEMP/site"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dev
+          git commit -m "krispr $version"
+          git push origin HEAD:maven-repo
