@@ -1,0 +1,84 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.krispr",
+    "module": "krispr-compiler-k2120",
+    "version": "0.1.0-fb.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.8.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "krispr-compiler-k2120-0.1.0-fb.2.jar",
+          "url": "krispr-compiler-k2120-0.1.0-fb.2.jar",
+          "size": 160762,
+          "sha512": "14753708b89a60840732801b371a481015acaf855a6f1f1d34d16f0b217ec212457d6ae6e6a4c824d467cbd252fb02b109d3531b93c3f12d7f8537c837fc9abe",
+          "sha256": "6bf1e813aff1ab30e1724b6285e277514a6a3c34f2ee27b9aecd894d6f36df2d",
+          "sha1": "ffd960c884a68d4c59674f7fa24217b1a855a2e5",
+          "md5": "ef5c273ff48d24b4cbc86c0880739fc1"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "krispr-compiler-k2120-0.1.0-fb.2.jar",
+          "url": "krispr-compiler-k2120-0.1.0-fb.2.jar",
+          "size": 160762,
+          "sha512": "14753708b89a60840732801b371a481015acaf855a6f1f1d34d16f0b217ec212457d6ae6e6a4c824d467cbd252fb02b109d3531b93c3f12d7f8537c837fc9abe",
+          "sha256": "6bf1e813aff1ab30e1724b6285e277514a6a3c34f2ee27b9aecd894d6f36df2d",
+          "sha1": "ffd960c884a68d4c59674f7fa24217b1a855a2e5",
+          "md5": "ef5c273ff48d24b4cbc86c0880739fc1"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "krispr-compiler-k2120-0.1.0-fb.2-sources.jar",
+          "url": "krispr-compiler-k2120-0.1.0-fb.2-sources.jar",
+          "size": 51672,
+          "sha512": "ebd7586e502a3f81b4ed057656b5ba01e30a1e29ea6bee413a807e655329f5ebaf7e71e861261be56931d047cf711c837a23b4b74db786b219d45d112c49c8b4",
+          "sha256": "7cac95a115ebe22dd59383a7b7be99cfb873bfb42e0255aee58e3bcf574ec93b",
+          "sha1": "b0700b63cd9bb38b2619ecc117abaa5af0c4a3bb",
+          "md5": "fefdcf3b7b406b749f037b4aa12ecaa6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.krispr",
+    "module": "krispr-compiler-k230",
+    "version": "0.1.0-fb.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.8.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "krispr-compiler-k230-0.1.0-fb.2.jar",
+          "url": "krispr-compiler-k230-0.1.0-fb.2.jar",
+          "size": 161079,
+          "sha512": "509cff4b13d9ad37d2ab0f7cb3e707cf4a83ee7fd8d1648d28b862646e8cd20b9727231e01e35682bff327b27ecebd0798057d10f31ce58e0236828bad4b0458",
+          "sha256": "73615a98fb7f92f0403b2d673de9874a936dbc888d78d714c118073dcc7465d3",
+          "sha1": "6e6c04c78ed16c58859878d452e7ee1d31888e48",
+          "md5": "fce8ba3e23b7108a575c0e4153dea798"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "krispr-compiler-k230-0.1.0-fb.2.jar",
+          "url": "krispr-compiler-k230-0.1.0-fb.2.jar",
+          "size": 161079,
+          "sha512": "509cff4b13d9ad37d2ab0f7cb3e707cf4a83ee7fd8d1648d28b862646e8cd20b9727231e01e35682bff327b27ecebd0798057d10f31ce58e0236828bad4b0458",
+          "sha256": "73615a98fb7f92f0403b2d673de9874a936dbc888d78d714c118073dcc7465d3",
+          "sha1": "6e6c04c78ed16c58859878d452e7ee1d31888e48",
+          "md5": "fce8ba3e23b7108a575c0e4153dea798"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "krispr-compiler-k230-0.1.0-fb.2-sources.jar",
+          "url": "krispr-compiler-k230-0.1.0-fb.2-sources.jar",
+          "size": 51774,
+          "sha512": "512d31cd5135b14513f5a1acfebc31d84c25f2c617a873c9d3e4810e8de5058d2cdfb6112e2e5a0fa56878acb9e34e961bb3f10b14695703e0785f9499a81501",
+          "sha256": "3dbb6f5172f85f363e5d8c0c2f89de108a620cb86680e9fdf8fd0661cc049f16",
+          "sha1": "897938de853589cb4b12072237187e0853315b8c",
+          "md5": "ac2aa11b459cee90ed1daee1529e6076"
+        }
+      ]
+    }
+  ]
+}
