@@ -968,6 +968,20 @@ class JvmFunctionalTest {
     }
 
     @Test
+    fun `a baseline that runs past baselineTimeoutMillis fails the run and names the limit`(@TempDir dir: File) {
+        writeProject(
+            dir,
+            main = mapOf("Ready.kt" to "fun ready(n: Int) = n > 0"),
+            test = mapOf("ReadyTest.kt" to "class ReadyTest { @kotlin.test.Test fun slow() { Thread.sleep(5_000); kotlin.test.assertTrue(ready(1)) } }"),
+            krispr = "baselineTimeoutMillis.set(2_000L)\nslowTestThresholdMs.set(60_000L)",
+        )
+
+        val result = runner(dir, "krisprRun", "-Pkrispr.history=false").buildAndFail()
+
+        assertTrue(result.output.contains("the covering tests do not pass in the forked runner without mutants (exit -1), past baselineTimeoutMillis (2000 ms)"), result.output)
+    }
+
+    @Test
     fun `a module tested from its testProject stores its tasks in the configuration cache of a parallel build`(@TempDir dir: File) {
         writeTestedFromAnotherProject(dir)
 

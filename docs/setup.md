@@ -32,6 +32,7 @@ krispr {
     timeoutFactor = 1.25           // per-mutant timeout = (its tests' recorded time + start-up) * factor + constant;
     timeoutConstantMillis = 4000L  // 1.25 and 4000 are PIT's defaults
     timeoutMinimumMillis = 10000L  // no mutant run times out sooner; default 10000 with Robolectric tests (a fresh JVM's start-up on a busy host), none without
+    baselineTimeoutMillis = 1800000L // the run of the covering tests with no mutant active, and the reuse check's; default 600000 (10 minutes)
     operators = listOf("DEFAULTS", "SWAP_COLLECTION_CALL") // or -Pkrispr.operators=...; see [PHILOSOPHY.md](PHILOSOPHY.md#operators)
     mode = "extreme"               // or -Pkrispr.mode=extreme; see Extreme mode
     historyFile = file("ci-cache/krispr-history.json") // default build/krispr/history.json

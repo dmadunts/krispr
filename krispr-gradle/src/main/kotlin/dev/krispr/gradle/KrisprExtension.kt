@@ -21,6 +21,15 @@ abstract class KrisprExtension {
     abstract val timeoutMinimumMillis: Property<Long>
 
     /**
+     * How long the tests that reach the covered mutants may run with no mutant active before any mutant
+     * runs: once in a fresh JVM (the baseline), and twice in a reused worker (the check). A baseline past
+     * it fails the run; a check past it leaves every mutant to a fresh JVM. The default, 600000 (10 minutes),
+     * suits a module whose mutants reach part of its tests; one whose every test reaches them, with a
+     * suite near that long, needs more.
+     */
+    abstract val baselineTimeoutMillis: Property<Long>
+
+    /**
      * The most krispr test JVMs (recording, baseline, each mutant's run) that run at once across the whole
      * build, however many modules Gradle runs in parallel. 0 (the default) is half the cores, capped by
      * memory at the tests' `-Xmx`. `-Pkrispr.maxConcurrentJvms=` overrides the build script. Each module

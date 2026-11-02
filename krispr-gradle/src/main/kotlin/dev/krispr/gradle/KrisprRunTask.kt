@@ -75,6 +75,9 @@ abstract class KrisprRunTask : KrisprForkTask() {
     /** See [KrisprExtension.timeoutMinimumMillis]; unset: [Timeouts.defaultMinimum]. */
     @get:Input @get:Optional abstract val timeoutMinimumMillis: Property<Long>
 
+    /** See [KrisprExtension.baselineTimeoutMillis]. */
+    @get:Input abstract val baselineTimeoutMillis: Property<Long>
+
     /** At most this many of this module's mutants run at once; 0 or less: [jvmCap]. */
     @get:Input abstract val threads: Property<Int>
     @get:Internal abstract val projectDirectory: DirectoryProperty
@@ -355,7 +358,7 @@ abstract class KrisprRunTask : KrisprForkTask() {
         try {
             if (covered.isNotEmpty()) {
                 val baselineSelectors = covered.flatMap { killers.getValue(it.id) }.toSortedSet().toList()
-                val baselineRun = pool.submit(Callable { withJvmSlot { runner.run("baseline", null, baselineSelectors, timeoutMillis = 10 * 60_000L) } })
+                val baselineRun = pool.submit(Callable { withJvmSlot { runner.run("baseline", null, baselineSelectors, timeoutMillis = baselineTimeoutMillis.get()) } })
                 val plainCount = covered.count { plainOnly(it) }
                 if (robolectric) {
                     logger.lifecycle(
@@ -378,7 +381,9 @@ abstract class KrisprRunTask : KrisprForkTask() {
                 if (baseline.timedOut || baseline.exitCode !in 0..1 || failing.size == baselineSelectors.size) {
                     throw GradleException(
                         "krispr: the covering tests do not pass in the forked runner without mutants " +
-                            "(exit ${baseline.exitCode}); see ${baseline.log}.",
+                            "(exit ${baseline.exitCode})" +
+                            (if (baseline.timedOut) ", past baselineTimeoutMillis (${baselineTimeoutMillis.get()} ms)" else "") +
+                            "; see ${baseline.log}.",
                     )
                 }
                 if (failing.isNotEmpty()) {
@@ -726,7 +731,7 @@ abstract class KrisprRunTask : KrisprForkTask() {
             val timings = mutableListOf<ForkRunner.Timing?>()
             for (round in 1..2) {
                 if (!worker.usable) worker = start() ?: return notStarted()
-                val result = worker.run("check-$round", null, selectors, 10 * 60_000L, failFast = false)
+                val result = worker.run("check-$round", null, selectors, baselineTimeoutMillis.get(), failFast = false)
                 if (result == null || result.timedOut || result.exitCode == 2) {
                     worker.kill()
                     logger.warn("krispr: the tests did not run in a reused JVM (see ${File(logsDirectory.get().asFile, "check-$round.log")}); one JVM per mutant")

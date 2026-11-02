@@ -50,6 +50,7 @@ class KrisprGradlePlugin : KotlinCompilerPluginSupportPlugin {
         extension.timeoutFactor.convention(1.25)
         extension.timeoutConstantMillis.convention(4_000L)
         // timeoutMinimumMillis has no convention: unset, the run task picks Timeouts.defaultMinimum.
+        extension.baselineTimeoutMillis.convention(10 * 60_000L)
         extension.threads.convention(0)
         extension.maxConcurrentJvms.convention(0)
         extension.forkJvmTuning.convention(KrisprForkTask.TUNING_AUTO)
@@ -325,6 +326,7 @@ class KrisprGradlePlugin : KotlinCompilerPluginSupportPlugin {
                 task.timeoutFactor.set(extension.timeoutFactor)
                 task.timeoutConstantMillis.set(extension.timeoutConstantMillis)
                 task.timeoutMinimumMillis.set(extension.timeoutMinimumMillis)
+                task.baselineTimeoutMillis.set(extension.baselineTimeoutMillis)
                 task.threads.set(extension.threads)
                 task.projectDirectory.set(project.layout.projectDirectory)
                 task.report.set(reportJson)
